@@ -1,6 +1,12 @@
 import java.awt.Color;
-
+/**
+ * A Walker randomly wander around the grid. It can be consume by JMan if the color is correct.
+ * @author Kan Kamalanon
+ *
+ */
 public class Walker extends Piece {
+	/** Constructor: a new Walker at position (x, y) on Map m
+    with color red if c = 0, green if c = 1, and yellow if c = 2. */
 	public Walker(int x, int y, int c, Map m){
 		super(Piece.WALKER, m);
 		this.setX(x);
@@ -13,14 +19,21 @@ public class Walker extends Piece {
 			this.setColor(Color.YELLOW);
 		}
 	}
-
+	
+	 /** Constructor: a new Walker at position (x, y) on Map m
+    with color c. Precondition: c is one of
+    Color.RED, Color.GREEN, and Color.YELLOW.*/
 	public Walker(int x, int y, Color c, Map m){
 		super(Piece.WALKER, m);
 		this.setX(x);
 		this.setY(y);
 		this.setColor(c);
 	}
-
+	
+	/**
+	 * Define how a Walker should act. It has a 33% chance of moving, if it moves, it will randomly move up, down, left
+	 * or right for 1 tile.
+	 */
 	@Override
 	public void act() {
 		if(Piece.rand(0, 2) > 1){
